@@ -1,22 +1,40 @@
-# Digit classification (MNIST)
+# MNIST Handwritten Digit Classification
 
-Goal
-Train a simple neural network (or use a small model) to classify MNIST digits and report accuracy.
+This module focuses on applying a neural network to classify handwritten digits using the MNIST dataset.
 
-Contents
-- mnist_digit.ipynb — main notebook (renamed from `mnist_digit (1).ipynb`)
-- README.md — this file
+---
 
-How to run
-1. From Project1 folder create and activate a venv and install deps:
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r ../requirements.txt
+##  Dataset
+- MNIST handwritten digit dataset
+- 28×28 grayscale images
+- 10 output classes (digits 0–9)
 
-2. Open the notebook:
-   jupyter notebook mnist_digit.ipynb
+---
 
-Notes
-- The notebook downloads MNIST automatically using the standard dataset utilities (e.g., torchvision or tensorflow datasets).
-- Random seed used: 42 (documented in the notebook)
-- Expected accuracy with the baseline small model: ~97–99% (depends on model and training)
+##  Model Overview
+- Fully connected neural network
+- Input layer: 784 neurons
+- Hidden layers with activation functions
+- Output layer with 10 classes
+
+---
+
+##  Workflow
+1. Load and preprocess data
+2. Normalize pixel values
+3. Train neural network
+4. Evaluate performance
+5. Visualize predictions
+
+---
+
+##  Results
+- Model achieved strong classification accuracy
+- Correctly predicted most handwritten digits
+- Visual inspection confirms learning effectiveness
+
+---
+
+##  Files
+- `mnist_digit_classifier.ipynb` – Training, evaluation, visualization
+- `introduction.md` – Problem overview and theory

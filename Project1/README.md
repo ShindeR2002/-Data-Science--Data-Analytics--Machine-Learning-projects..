@@ -1,36 +1,51 @@
+# Neural Network from Scratch & MNIST Digit Classification
 
+This project demonstrates a complete understanding of **neural networks**, starting from core theory and mathematical foundations to practical implementation and application on the **MNIST handwritten digit dataset**.
 
-Digit recognition and neural network experiments.
+The goal is to build intuition for how neural networks work internally and then apply them to a real-world classification problem.
 
-This folder contains two subprojects:
-- Project1/Digit — MNIST digit classification experiments and notebooks.
-- Project1/Neural network — a small educational neural network implementation (pure NumPy).
+---
 
-Overview
-- Goal: Provide runnable notebooks and supporting scripts to reproduce the experiments.
-- Structure is intentionally simple to make it easy for others to run locally.
+## 📌 Problem Statement
+Handwritten digit recognition is a classic machine learning problem.  
+The objective is to correctly classify digits (0–9) from grayscale images using a neural network model.
 
-Quickstart
-1. Change to the project folder:
-   cd Project1
-2. Create a virtual environment and install dependencies:
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-3. Open the digit notebook:
-   jupyter notebook Digit/mnist_digit.ipynb
-4. Or run the training placeholder:
-   python src/train.py --help
+---
 
-Structure
-- Digit/ — notebooks and docs for MNIST experiments
-- Neural network/ — NumPy neural network implementation and docs
-- src/ — small helper scripts (preprocessing, training)
-- requirements.txt — Python dependencies for the project
-- .gitignore — ignores for Python/Jupyter and data/models
+## 🧠 Approach
+The project is divided into two logical parts:
 
-Data
-- MNIST is not included in the repo. The notebook uses the standard dataset loaders to fetch it automatically.
+### 1. Neural Network Fundamentals
+- Implemented a neural network **from scratch using Python**
+- Covered:
+  - Forward propagation
+  - Activation functions
+  - Loss computation
+  - Backpropagation
+  - Weight updates
+- Focused on understanding **how learning actually happens**
 
-License & contribution
-- No license file added per your instruction. If you want an MIT license, tell me and I will add it.
+### 2. MNIST Digit Classification
+- Used the MNIST dataset for training and evaluation
+- Implemented preprocessing, training, and prediction
+- Evaluated model performance using accuracy and predictions
+
+---
+
+## 🛠 Tools & Technologies
+- Python
+- NumPy
+- Jupyter Notebook
+- Matplotlib
+- Markdown documentation
+
+---
+
+## 📊 Results
+- Successfully trained a neural network to classify handwritten digits
+- Achieved reliable accuracy on test data
+- Visualized predictions to validate model behavior
+
+---
+
+## 📁 Project Structure

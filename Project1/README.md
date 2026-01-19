@@ -49,3 +49,31 @@ The project is divided into two logical parts:
 ---
 
 ## 📁 Project Structure
+
+Project1/
+├── Digit/
+│ ├── mnist_digit_classifier.ipynb
+│ ├── README.md
+│ └── introduction.md
+│
+├── Neural network/
+│ ├── neural_network.py
+│ └── introduction.md
+│
+└── README.md
+
+
+
+
+## 🎯 Key Learnings
+- Deep understanding of neural network internals
+- Hands-on experience with ML pipelines
+- Ability to explain ML concepts clearly using documentation
+
+---
+
+## 🚀 Future Improvements
+- Add regularization techniques
+- Experiment with deeper architectures
+- Extend to CNN-based digit classification
+

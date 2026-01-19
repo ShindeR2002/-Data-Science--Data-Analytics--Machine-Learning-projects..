@@ -6,13 +6,13 @@ The goal is to build intuition for how neural networks work internally and then 
 
 ---
 
-## 📌 Problem Statement
+##  Problem Statement
 Handwritten digit recognition is a classic machine learning problem.  
 The objective is to correctly classify digits (0–9) from grayscale images using a neural network model.
 
 ---
 
-## 🧠 Approach
+##  Approach
 The project is divided into two logical parts:
 
 ### 1. Neural Network Fundamentals
@@ -41,14 +41,14 @@ The project is divided into two logical parts:
 
 ---
 
-## 📊 Results
+##  Results
 - Successfully trained a neural network to classify handwritten digits
 - Achieved reliable accuracy on test data
 - Visualized predictions to validate model behavior
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 Project1/
 ├── Digit/
@@ -65,14 +65,14 @@ Project1/
 
 
 
-## 🎯 Key Learnings
+##  Key Learnings
 - Deep understanding of neural network internals
 - Hands-on experience with ML pipelines
 - Ability to explain ML concepts clearly using documentation
 
----
 
-## 🚀 Future Improvements
+
+##  Future Improvements
 - Add regularization techniques
 - Experiment with deeper architectures
 - Extend to CNN-based digit classification

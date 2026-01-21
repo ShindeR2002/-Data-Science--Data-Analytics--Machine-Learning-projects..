@@ -12,7 +12,8 @@ In the field of computer vision, handwritten digit recognition (MNIST) serves as
 ### 1.2 Model Architecture Visualized
 The network is structured as a feed-forward engine with the following topology:
 
-![Neural Network Architecture](architecture_diagram.png)
+![alt text](architecture.PNG)
+
 **
 
 ### 1.3 Key Performance Indicators (KPIs)
@@ -37,7 +38,7 @@ The architecture is designed to map high-dimensional pixel data into a categoric
 ### II. Optimization Stack: The ADAM Algorithm
 To achieve fast convergence, I implemented the **ADAM Optimizer**, which utilizes adaptive moment estimation:
 ![alt text](adam_optimizer.PNG)
-![ADAM Optimizer Logic](adam_math.png)
+
 **
 
 * **Momentum:** Implemented first-order ($m$) and second-order ($v$) moment estimations. 

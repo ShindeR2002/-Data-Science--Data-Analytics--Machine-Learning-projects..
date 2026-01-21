@@ -1,79 +1,47 @@
-# Neural Network from Scratch & MNIST Digit Classification
-
-This project demonstrates a complete understanding of **neural networks**, starting from core theory and mathematical foundations to practical implementation and application on the **MNIST handwritten digit dataset**.
-
-The goal is to build intuition for how neural networks work internally and then apply them to a real-world classification problem.
+# Handwritten Digit Recognition: A From-Scratch Neural Engine
+**Author:** Rohit, M.Tech Aerospace Engineering (IIT Kanpur)  
+**Technical Focus:** Vectorized Linear Algebra, ADAM Optimization, and Manifold Analysis
 
 ---
 
-##  Problem Statement
-Handwritten digit recognition is a classic machine learning problem.  
-The objective is to correctly classify digits (0–9) from grayscale images using a neural network model.
+## Section 1: Project Overview & Executive Summary
+
+### 1.1 Problem Statement
+In the field of computer vision, handwritten digit recognition (MNIST) serves as the primary benchmark for architectural efficiency. The objective was to design and implement a **Deep Neural Network (DNN)** built entirely from the ground up using **NumPy**, deliberately bypassing high-level frameworks like TensorFlow or PyTorch. This approach demonstrates a deep mastery of backpropagation mechanics and numerical stability.
+
+### 1.2 Key Performance Indicators (KPIs)
+The model underwent rigorous training and validation to achieve industry-standard performance:
+
+* **Final Test Accuracy:** **96.62%**
+* **Verification Accuracy:** **96.59%** (Secondary test on 10,000 unseen images)
+* **Architectural Depth:** 3-Layer Fully Connected Network with 512 Hidden Neurons
+* **Training Stability:** Successfully reached convergence over 40 epochs without gradient explosion.
+
+
 
 ---
 
-##  Approach
-The project is divided into two logical parts:
+## 1.3 Technical Architecture & Mathematics
 
-### 1. Neural Network Fundamentals
-- Implemented a neural network **from scratch using Python**
-- Covered:
-  - Forward propagation
-  - Activation functions
-  - Loss computation
-  - Backpropagation
-  - Weight updates
-- Focused on understanding **how learning actually happens**
+### I. Model Topology
+The architecture is designed to map high-dimensional pixel data into a categorical probability space:
 
-### 2. MNIST Digit Classification
-- Used the MNIST dataset for training and evaluation
-- Implemented preprocessing, training, and prediction
-- Evaluated model performance using accuracy and predictions
+* **Input Layer ($X$):** 784 units (Flattened 28x28 grayscale images).
+* **Hidden Layer ($H_1$):** 512 neurons with **He Initialization** ($W \sim \mathcal{N}(0, \sqrt{2/n_{in}})$) to prevent signal saturation in the ReLU activation.
+* **Output Layer ($Y$):** 10 neurons with **Softmax** activation for probability distribution.
 
----
+### II. Optimization Stack
+* **ADAM Optimizer:** Implemented adaptive learning rates using first-order ($m$) and second-order ($v$) moment estimations. This allowed for much faster convergence compared to standard Stochastic Gradient Descent (SGD).
+* **Dropout Regularization:** Integrated a **10% Dropout** rate during training to force the network to learn robust, non-redundant feature representations.
+* **Learning Rate Decay:** Implemented an 80% decay schedule every 5 epochs to ensure the optimizer settles smoothly into the global minimum.
 
-## 🛠 Tools & Technologies
-- Python
-- NumPy
-- Jupyter Notebook
-- Matplotlib
-- Markdown documentation
+
+
+### III. Vectorized Computation
+The engine is strictly vectorized using **NumPy** for maximum computational efficiency:
+
+* **Batch Size:** 256 samples per iteration.
+* **Forward Prop:** $Z = X \cdot W^T + b$.
+* **Backward Prop:** Multi-layer chain rule implementation with L2 weight penalty.
 
 ---
-
-##  Results
-- Successfully trained a neural network to classify handwritten digits
-- Achieved reliable accuracy on test data
-- Visualized predictions to validate model behavior
-
----
-
-##  Project Structure
-
-Project1/
-├── Digit/
-│ ├── mnist_digit_classifier.ipynb
-│ ├── README.md
-│ └── introduction.md
-│
-├── Neural network/
-│ ├── neural_network.py
-│ └── introduction.md
-│
-└── README.md
-
-
-
-
-##  Key Learnings
-- Deep understanding of neural network internals
-- Hands-on experience with ML pipelines
-- Ability to explain ML concepts clearly using documentation
-
-
-
-##  Future Improvements
-- Add regularization techniques
-- Experiment with deeper architectures
-- Extend to CNN-based digit classification
-

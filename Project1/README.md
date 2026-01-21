@@ -86,7 +86,12 @@ The error is propagated backward to compute the gradient of the Cross-Entropy Lo
 $$\frac{\partial J}{\partial W} = \frac{\partial J}{\partial A} \cdot \frac{\partial A}{\partial Z} \cdot \frac{\partial Z}{\partial W}$$
 
 !
+**The Information Flow:**
+1. **Forward Pass:** Input data is transformed into activations, flowing from the input layer to the Softmax output.
+2. **Loss Calculation:** The difference between the prediction and the true label is calculated.
+3. **Backward Pass:** The error gradient is "backpropagated" through the network using the Chain Rule, updating weights at each layer to minimize future error.
 
+![alt text](propogation.png)
 ---
 
 ### IV. Regularization Strategies

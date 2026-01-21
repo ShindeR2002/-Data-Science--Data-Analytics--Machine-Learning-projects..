@@ -138,3 +138,39 @@ To verify generalizability, I visualized a grid of predictions on a randomized s
 
 
 ![alt text](image-4.png)
+
+
+
+
+
+
+
+## Section 4: Automation & Deployment
+
+### 4.1 Weight Serialization & Model Persistence
+To ensure the model is production-ready, I implemented a serialization workflow. Instead of retraining the network for every use, the optimized weights and biases are saved as high-performance `.npy` files.
+
+* **Storage Path:** `/final_97_model/`
+* **Format:** NumPy Binary (optimized for fast I/O)
+
+### 4.2 The Inference Agent (`deploy_mnist.py`)
+I developed a standalone Python script that acts as an **Inference Agent**. This script encapsulates the forward-propagation logic, allowing a user to classify new images without needing the training environment.
+
+**Automated Workflow:**
+1. **Load:** Automatically pulls the pre-trained weights into a fresh `Network` instance.
+2. **Pre-process:** Normalizes input pixels to the [0, 1] range used during training.
+3. **Predict:** Outputs the predicted digit along with the Softmax probability score.
+
+
+
+---
+
+## 5. Conclusion & Future Roadmap
+This project successfully bridges the gap between **Aerospace Engineering** rigor and **Data Science** innovation. By building this engine from first principles, I have verified:
+* Mastery of **Vectorized Linear Algebra** and **Calculus**.
+* Ability to implement and tune **Advanced Optimizers** (ADAM).
+* Proficiency in **Diagnostic Auditing** using dimensionality reduction.
+
+**Future Iterations:**
+* **Convolutional Layers:** Transitioning from Fully Connected to CNN layers for spatial feature extraction.
+* **SQL Integration:** Automating the data pipeline to pull from a SQL database for real-time fintech analytics.

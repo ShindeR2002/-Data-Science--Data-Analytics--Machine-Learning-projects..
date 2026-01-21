@@ -90,3 +90,36 @@ While t-SNE focuses on local neighbors, the **PCA dashboard** provides a global 
 * **Linear Separability:** The PCA results confirm that the network has transformed the original pixel space into a feature space where digits are significantly more separable, proving the hidden layer's role as a powerful feature extractor.
 
 ![alt text](image-1.png)
+
+
+
+
+
+## Section 3: Diagnostic Auditing & Failure Analysis
+
+### 3.1 Confusion Matrix: Performance by Digit
+To evaluate the model beyond global accuracy, I generated a **Confusion Matrix** to audit the precision and recall of each digit class.
+
+* **High-Precision Classes:** The model exhibits near-perfect recall for **'1'** (1,121 correct) and **'0'** (966 correct), indicating that these digits have the most distinct feature signatures.
+* **Systematic Confusion:** The highest degree of error occurs between **'4'** and **'9'** (17 instances) and **'7'** and **'2'** (20 instances). This is expected given the topological similarities in handwritten variants of these digits.
+
+![Confusion Matrix](image_1f4208.png)
+
+---
+
+### 3.2 Error Deep-Dive: Hard-to-Classify Digits
+True engineering rigor involves looking at the "Success and Failure" images side-by-side.
+
+* **Visual Test Success:** Random visual tests (such as digit '7') confirm that the model's prediction aligns with human visual perception.
+* **Detailed Failure Analysis:** I extracted the specific images where the model failed. Many of these "misclassifications" involve digits with extreme human writing noise, such as a '5' that structurally resembles a '6' or a '9' that looks like an '8'.
+
+![Error Analysis](image_1f4223.png)
+
+---
+
+### 3.3 Inference on Unseen Data
+To verify generalizability, I visualized a grid of predictions on a randomized subset of the test data.
+
+* **Generalization Proof:** The model correctly identifies various handwriting styles (slanted, thick, and thin strokes), proving that the **Dropout Regularization** and **L2 Penalty** successfully prevented overfitting.
+
+![Model Predictions](image_1f41ec.png)

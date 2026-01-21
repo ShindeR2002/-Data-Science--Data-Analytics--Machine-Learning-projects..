@@ -5,7 +5,6 @@
 
 
 
-
 # Handwritten Digit Recognition: A From-Scratch Neural Engine
 **Author:** Rohit, M.Tech Aerospace Engineering (IIT Kanpur)  
 **Technical Focus:** Vectorized Linear Algebra, ADAM Optimization, and Manifold Analysis
@@ -13,6 +12,16 @@
 ---
 
 ## Section 1: Project Overview & Executive Summary
+
+### 1.1 Quick Specifications
+| Feature | Specification |
+| :--- | :--- |
+| **Model Type** | 3-Layer Fully Connected Neural Network |
+| **Initialization** | He Initialization ($Var(W) = 2/n$) |
+| **Regularization** | 10% Dropout + L2 Weight Decay |
+| **Optimization** | ADAM with Adaptive Learning Rate |
+| **Final Accuracy** | **96.62%** |
+
 
 ### 1.1 Problem Statement
 In the field of computer vision, handwritten digit recognition (MNIST) serves as the primary benchmark for architectural efficiency. The objective was to design and implement a **Deep Neural Network (DNN)** built entirely from the ground up using **NumPy**, deliberately bypassing high-level frameworks like TensorFlow or PyTorch. This approach demonstrates a deep mastery of backpropagation mechanics and numerical stability.

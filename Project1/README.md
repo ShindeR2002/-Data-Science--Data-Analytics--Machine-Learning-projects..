@@ -40,7 +40,7 @@ The architecture is designed to map high-dimensional pixel data into a categoric
 To achieve fast convergence, I implemented the **ADAM Optimizer**, which utilizes adaptive moment estimation:
 
 
-![alt text](adam_optimizer.PNG)
+![alt text](adam_optimizer-1.PNG)
 
 
 

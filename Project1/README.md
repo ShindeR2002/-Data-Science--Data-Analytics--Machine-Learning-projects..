@@ -1,3 +1,11 @@
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+![Accuracy](https://img.shields.io/badge/Accuracy-96.62%25-green?style=for-the-badge)
+
+
+
+
+
 # Handwritten Digit Recognition: A From-Scratch Neural Engine
 **Author:** Rohit, M.Tech Aerospace Engineering (IIT Kanpur)  
 **Technical Focus:** Vectorized Linear Algebra, ADAM Optimization, and Manifold Analysis
@@ -27,17 +35,54 @@ The model underwent rigorous training and validation to achieve industry-standar
 
 ---
 
-## 1.4 Technical Architecture & Mathematics
+## 1.4 Technical Architecture & Mathematical Foundation
 
-### I. Model Topology
-The architecture is designed to map high-dimensional pixel data into a categorical probability space:
+This project transitions from theoretical linear algebra to a high-performance computational engine. By implementing the network from first principles, we ensure total control over gradient flow and numerical stability.
 
-* **Input Layer ($X$):** 784 units (Flattened 28x28 grayscale images).
-* **Hidden Layer ($H_1$):** 512 neurons with **He Initialization** ($W \sim \mathcal{N}(0, \sqrt{2/n_{in}})$) to prevent signal saturation in the ReLU activation.
-* **Output Layer ($Y$):** 10 neurons with **Softmax** activation for probability distribution.
+### I. Model Topology & Initialization
+The architecture maps a 784-dimensional input space into a 10-class probability manifold:
 
-### II. Optimization Stack: The ADAM Algorithm
-To achieve fast convergence, I implemented the **ADAM Optimizer**, which utilizes adaptive moment estimation:
+* **Input Layer ($X$):** $784$ units normalized to $[0, 1]$.
+* **Hidden Layer ($H_1$):** $512$ neurons using **He Initialization** to maintain a stable variance of $2/n$:
+  $$W \sim \mathcal{N}\left(0, \sqrt{\frac{2}{n_{in}}}\right)$$
+* **Output Layer ($Y$):** $10$ neurons with **Softmax** activation:
+  $$\sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}$$
+
+!
+
+---
+
+### II. The Optimization Stack: ADAM Algorithm
+To achieve superior convergence, I implemented the **ADAM (Adaptive Moment Estimation)** optimizer. Unlike standard SGD, ADAM computes individual adaptive learning rates for different parameters:
+
+1. **Momentum (First Moment):** $m_t = \beta_1 m_{t-1} + (1 - \beta_1)g_t$
+2. **RMSProp (Second Moment):** $v_t = \beta_2 v_{t-1} + (1 - \beta_2)g_t^2$
+3. **Bias Correction:** $\hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t}$
+4. **Final Weight Update:** $\theta_t = \theta_{t-1} - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t$
+
+!
+
+---
+
+### III. Vectorized Forward & Backward Propagation
+The engine is strictly vectorized using **NumPy** to utilize SIMD instructions for maximum efficiency.
+
+**Forward Pass:**
+For each layer $L$, the transformation is defined as:
+$$Z^{[L]} = A^{[L-1]} \cdot W^{[L]T} + b^{[L]}$$
+$$A^{[L]} = \text{ReLU}(Z^{[L]}) = \max(0, Z^{[L]})$$
+
+**Backward Pass (The Chain Rule):**
+The error is propagated backward to compute the gradient of the Cross-Entropy Loss ($J$) with respect to weights ($W$):
+$$\frac{\partial J}{\partial W} = \frac{\partial J}{\partial A} \cdot \frac{\partial A}{\partial Z} \cdot \frac{\partial Z}{\partial W}$$
+
+!
+
+---
+
+### IV. Regularization Strategies
+* **Dropout (10%):** A binary mask is applied during training to prevent neuron co-adaptation: $A_{drop} = A \cdot \text{mask}$.
+* **L2 Penalty:** Added to the cost function to penalize large weights and prevent overfitting: $L = \text{Loss} + \frac{\lambda}{2m} \sum W^2$.
 
 
 
@@ -46,16 +91,7 @@ To achieve fast convergence, I implemented the **ADAM Optimizer**, which utilize
 
 
 
-* **Momentum:** Implemented first-order ($m$) and second-order ($v$) moment estimations. 
-* **Dropout Regularization:** Integrated a **10% Dropout** rate to force the network to learn robust feature representations.
-* **Learning Rate Decay:** An 80% decay schedule every 5 epochs ensures the optimizer settles smoothly into the global minimum.
 
-### III. Vectorized Computation
-The engine is strictly vectorized using **NumPy** for maximum computational efficiency:
-
-* **Batch Size:** 256 samples per iteration.
-* **Forward Prop:** $Z = X \cdot W^T + b$.
-* **Backward Prop:** Multi-layer chain rule implementation with L2 weight penalty.
 
 
 ---

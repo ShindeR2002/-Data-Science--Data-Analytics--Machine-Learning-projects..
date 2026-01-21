@@ -67,7 +67,7 @@ The **Convergence Plot** below captures the optimization journey of the model. O
 * **ADAM Stability:** The smooth, consistent descent in the curve validates the effectiveness of the Adaptive Moment Estimation logic.
 * **Optimization Proof:** The lack of major divergence in the later stages confirms that the **Learning Rate Decay** (80% every 5 epochs) successfully stabilized the weights as the model approached the global minimum.
 
-![Convergence Plot](loss_curve.png)
+![alt text](<convergence plot.PNG>)
 **
 
 ---
@@ -79,7 +79,7 @@ To audit how the 512-neuron hidden layer interprets raw pixel data, I applied di
 * **Geometric Separation:** Simple, unique structures like **'0'** and **'1'** form isolated islands, directly correlating to their near-perfect recall rates.
 * **Structural Proximity:** The proximity of clusters for **'4'**, **'7'**, and **'9'** visually explains the "Hard-to-Classify" edge cases where handwritten strokes share similar geometric properties.
 
-![t-SNE Clustering](image_1f422a.png)
+![alt text](image.png)
 **
 
 ---
@@ -89,4 +89,4 @@ While t-SNE focuses on local neighbors, the **PCA dashboard** provides a global 
 
 * **Linear Separability:** The PCA results confirm that the network has transformed the original pixel space into a feature space where digits are significantly more separable, proving the hidden layer's role as a powerful feature extractor.
 
-![PCA Dashboard](image_1f4248.png)
+![alt text](image-1.png)

@@ -56,3 +56,37 @@ The engine is strictly vectorized using **NumPy** for maximum computational effi
 * **Backward Prop:** Multi-layer chain rule implementation with L2 weight penalty.
 
 ---
+
+
+
+## Section 2: Training Dynamics & Visual Analytics
+
+### 2.1 Convergence Analysis
+The **Convergence Plot** below captures the optimization journey of the model. Over 40 epochs, the error successfully decayed from approximately **10.1 to 6.5**.
+
+* **ADAM Stability:** The smooth, consistent descent in the curve validates the effectiveness of the Adaptive Moment Estimation logic.
+* **Optimization Proof:** The lack of major divergence in the later stages confirms that the **Learning Rate Decay** (80% every 5 epochs) successfully stabilized the weights as the model approached the global minimum.
+
+![Convergence Plot](loss_curve.png)
+**
+
+---
+
+### 2.2 Manifold Learning: t-SNE & PCA Clustering
+To audit how the 512-neuron hidden layer interprets raw pixel data, I applied dimensionality reduction to project the internal features into a 2D plane.
+
+* **t-SNE Visualization:** The t-SNE plot reveals that the model has successfully learned to group similar digits into distinct, well-separated geometric clusters.
+* **Geometric Separation:** Simple, unique structures like **'0'** and **'1'** form isolated islands, directly correlating to their near-perfect recall rates.
+* **Structural Proximity:** The proximity of clusters for **'4'**, **'7'**, and **'9'** visually explains the "Hard-to-Classify" edge cases where handwritten strokes share similar geometric properties.
+
+![t-SNE Clustering](image_1f422a.png)
+**
+
+---
+
+### 2.3 Principal Component Analysis (PCA)
+While t-SNE focuses on local neighbors, the **PCA dashboard** provides a global view of the feature variance.
+
+* **Linear Separability:** The PCA results confirm that the network has transformed the original pixel space into a feature space where digits are significantly more separable, proving the hidden layer's role as a powerful feature extractor.
+
+![PCA Dashboard](image_1f4248.png)

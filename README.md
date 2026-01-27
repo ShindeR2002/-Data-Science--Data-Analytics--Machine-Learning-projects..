@@ -1,14 +1,27 @@
-# Jet Engine Reliability Intelligence: Deep LSTM Framework for Failure Prognostics & ROI Optimization
+# Jet Engine Reliability Intelligence: Deep LSTM Framework for Failure Prognostics & ROI Optimization [![Live Dashboard](https://img.shields.io/badge/Live-Interactive%20Dashboard-success)](https://wvmfc253epaqbjfoaxxcfl.streamlit.app/)
+
+
 > **Developing a temporal deep learning system to predict maintenance requirements and maximize operational ROI for high-value aerospace assets.**
 
+
 ---
+
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-orange)
+![Scikit--Learn](https://img.shields.io/badge/Scikit--Learn-ML-yellow)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-purple)
+![Domain](https://img.shields.io/badge/Domain-Predictive%20Maintenance-red)
+![Focus](https://img.shields.io/badge/Focus-Risk%20Analytics-blueviolet)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
+
 
 ## Project Overview
 In the aviation industry, unscheduled engine downtime is a multi-million dollar liability. Waiting for a component to fail (**Reactive Maintenance**) results in emergency logistics costs, grounding of aircraft, and potential safety risks.
 
 This project develops a **Prognostic Health Management (PHM)** system using Deep Learning. By processing high-frequency sensor telemetry from the NASA CMAPSS dataset, the system identifies the "hidden" signals of mechanical wear-and-tear before a failure occurs.
 
-**The ML Task:** This is a **Supervised Time-Series Classification** project. The model analyzes a temporal window of engine data (last 50 cycles) to predict if a failure will occur within a "Critical Window" (next 30 cycles), enabling a transition to **Condition-Based Maintenance (CBM)**.
+**The ML Task:** This is a **Supervised Time-Series Classification** project. The model analyzes a temporal window of engine data (last 50 cycles) to predict if a failure will occur within a "Critical Window" (next 30 cycles), enabling a transition to **Condition-Based Maintenance (CBM)**. This framing allows the system to function as an early-warning analytics tool rather than a post-failure diagnostic model.
+
 
 
 
@@ -51,6 +64,9 @@ The EDA phase focused on identifying "Lead Indicators"—sensors that demonstrat
 * **Sensor Drift Analysis:** Primary sensors such as **S11 (LPC Outlet Static Pressure)** and **S12 (HPC Outlet Static Pressure)** exhibited significant drift as the engine neared failure. This verified that the degradation signal was present in the telemetry.
 * **Feature Redundancy:** Correlation analysis revealed high collinearity between certain sensor groups. Furthermore, constant-value sensors were identified and removed to minimize the signal-to-noise ratio.
 * **Temporal Patterns:** Plotting sensor values over operational cycles demonstrated that failure is not a sudden event but a gradual decay process, justifying the use of a temporal model like LSTM.
+* * **Trend Strength:** S11 and S12 exhibited a consistent monotonic drift in the final 30–40 cycles leading up to failure.
+* **Signal-to-Noise Improvement:** Removing low-variance sensors reduced feature dimensionality by ~15% with no loss in model performance.
+
 
 ![Sensor Correlation Map](sensor_heatmap.png)
 
@@ -79,7 +95,8 @@ A **Stacked Long Short-Term Memory (LSTM)** architecture was selected for this p
 | **LSTM Layer 2** | Recurrent | 50 Units (Return Sequences = False) |
 | **Output Layer** | Dense | 1 Unit with Sigmoid Activation |
 
-The architecture was designed to first capture high-level temporal patterns in the initial layer and then condense those into a single failure probability in the final layers.
+The architecture was designed to first capture high-level temporal patterns in the initial layer and then condense those into a single failure probability in the final layers. Classical ML models (e.g., Random Forest, Logistic Regression) were benchmarked but struggled to capture long-range temporal dependencies inherent in gradual engine degradation.
+
 
 
 
@@ -104,7 +121,8 @@ $$KS = \max |F_{Healthy}(x) - F_{Failing}(x)|$$
 
 
 ## Model Evaluation & Results
-The model was validated using a blind test set to ensure high generalizability. Evaluation focused on both statistical accuracy and the decisiveness of the probability scores.
+The model was validated using a blind test set to ensure high generalizability. Evaluation focused on both statistical accuracy and the decisiveness of the probability scores. To prevent data leakage, all temporal windows were generated strictly within individual engine lifecycles, and no future-cycle information was used during training.
+
 
 | Metric | Score | Interpretation |
 | :--- | :--- | :--- |
@@ -141,7 +159,8 @@ To bridge the gap between Data Science and Fleet Operations, an interactive dash
 * **Project Survival Probability:** View Kaplan-Meier survival curves to estimate the remaining safe cycles for an engine.
 <img width="1917" height="904" alt="Screenshot 2026-01-27 225642" src="https://github.com/user-attachments/assets/c377f085-8505-48e5-82b3-4f63678eda1c" />
 
-https://wvmfc253epaqbjfoaxxcfl.streamlit.app/
+🔗 **Live Dashboard:** https://wvmfc253epaqbjfoaxxcfl.streamlit.app/
+
 
 
 
